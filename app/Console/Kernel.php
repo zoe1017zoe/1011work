@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        Commands\DeleteChartRecords::class,
     ];
 
     /**
@@ -25,6 +26,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        //注意時區配置 app\config\app.php
+        //在wwindows要去工作排成設定
+
+        $schedule->command('DeleteChartRecords:name')->everyFiveMinutes();
     }
 
     /**
